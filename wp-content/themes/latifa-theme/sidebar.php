@@ -10,6 +10,7 @@
 
 	</form>
 
+
 	<form action="blog/" method="post" class="form-mailing">
 
 		<p class="title">Подпишитесь на рассылку,<br> это бесплатно</p>
