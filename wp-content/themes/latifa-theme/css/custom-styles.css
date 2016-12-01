@@ -681,7 +681,8 @@ article.why-courses img {
 .content-list li h2 {
     position: absolute;
     left: 20px;
-    bottom: 10px;
+    /*bottom: 10px;*/
+    bottom: 35px;
     font-size: 1.875em;
     color: #ffffff;
     font-family: 'OpenSans Bold', sans-serif;

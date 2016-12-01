@@ -29,66 +29,27 @@
 		<div class="title-block"><span>скоро</span></div>
 
 		<ul>
-
-			<li class="clearfix">
-				<div class="image-wrap">
-					<img src="<?php bloginfo('template_url'); ?>/images/soon-1.png" alt="soon">
-				</div>
-				<div class="event-info">
-					<h3><a href="#">Тренинг «Как создать и раскрутить собственный сайт»</a></h3>
-					<time>Дата</time>
-				</div>
-			</li>
-
-			<li class="clearfix">
-				<div class="image-wrap">
-					<img src="<?php bloginfo('template_url'); ?>/images/soon-2.png" alt="soon">
-				</div>
-				<div class="event-info">
-					<h3><a href="#">Как стать дорогим копирайтером</a></h3>
-					<time>Дата</time>
-				</div>
-			</li>
-
-			<li class="clearfix">
-				<div class="image-wrap">
-					<img src="<?php bloginfo('template_url'); ?>/images/soon-3.png" alt="soon">
-				</div>
-				<div class="event-info">
-					<h3><a href="#">Блог: создать и раскрутить</a></h3>
-					<time>Дата</time>
-				</div>
-			</li>
-
-			<li class="clearfix">
-				<div class="image-wrap">
-					<img src="<?php bloginfo('template_url'); ?>/images/soon-4.png" alt="soon">
-				</div>
-				<div class="event-info">
-					<h3><a href="#">Женственность мусульманки</a></h3>
-					<time>Дата</time>
-				</div>
-			</li>
-
-			<li class="clearfix">
-				<div class="image-wrap">
-					<img src="<?php bloginfo('template_url'); ?>/images/soon-5.png" alt="soon">
-				</div>
-				<div class="event-info">
-					<h3><a href="#">Инфобизнес: создать и раскрутить</a></h3>
-					<time>Дата</time>
-				</div>
-			</li>
-
-			<li class="clearfix">
-				<div class="image-wrap">
-					<img src="<?php bloginfo('template_url'); ?>/images/soon-6.png" alt="soon">
-				</div>
-				<div class="event-info">
-					<h3><a href="#">Инстаграм: с нуля до результата</a></h3>
-					<time>Дата</time>
-				</div>
-			</li>
+			<?php
+			$n_query = new WP_Query( array(
+					'category__in' => 3,
+					'posts_per_page' => 5,
+					'paged' => $paged
+			) );
+			while ($n_query->have_posts()) : $n_query->the_post(); ?>
+				<li class="clearfix">
+					<div class="image-wrap">
+						<?php
+						$image = get_field('sidebar_image');
+						if( !empty($image) ): ?>
+							<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+						<?php endif; ?>
+					</div>
+					<div class="event-info">
+						<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+						<time><?php echo get_field('course_date'); ?></time>
+					</div>
+				</li>
+			<?php endwhile; ?>
 
 		</ul>
 
